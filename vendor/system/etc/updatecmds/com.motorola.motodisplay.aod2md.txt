@@ -1,0 +1,16 @@
+# Update commands script for data migration from AOD to MotoDisplay
+
+###########################
+# Data migration for AOD
+###########################
+
+# move AOD shared preferences to MotoDisplay
+com.motorola.motodisplay:com.motorola.aon
+    shared_prefs/Aon_Prefs.xml
+
+com.motorola.motodisplay:com.motorola.aon
+    shared_prefs/com.motorola.aon_preferences.xml
+
+com.motorola.motodisplay:com.motorola.aon
+    shared_prefs/aon_state.xml
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <item>com.motorola.commandcenter</item>
+    <item>com.motorola.context</item>
+    <item>com.motorola.contextual.smartrules2</item>
+    <item>com.motorola.sensorhub.stml0.updater</item>
+</packages>

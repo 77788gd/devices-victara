@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<permissions>
+    <feature name="com.motorola.software.device.victara" />
+    <feature name="com.motorola.software.product.victara_tmo" />
+    <feature name="com.motorola.software.fingerprint.motorola/victara_tmo/victara:5.1/LPE23.32-21.3/5:user/test-keys" />
+    <feature name="com.motorola.hardware.tier." />
+    <feature name="com.motorola.hardware.wave.0" />
+</permissions>
