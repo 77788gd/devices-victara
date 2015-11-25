@@ -42,110 +42,59 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 8
+    .locals 3
 
     .prologue
-    const/4 v7, 0x4
-
-    const/4 v6, 0x3
-
-    const/4 v5, 0x2
-
-    const/4 v4, 0x1
-
-    const/4 v3, 0x0
-
-    .line 133
-    const/4 v0, 0x7
+    .line 86
+    const/4 v0, 0x5
 
     add-int/lit8 v0, v0, 0x2
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-string v1, "NONE"
+    const/4 v1, 0x0
 
-    aput-object v1, v0, v3
+    const-string v2, "NONE"
 
-    const-string v1, "WPA_PSK"
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v4
+    const/4 v1, 0x1
 
-    const-string v1, "WPA_EAP"
+    const-string v2, "WPA_PSK"
 
-    aput-object v1, v0, v5
+    aput-object v2, v0, v1
 
-    const-string v1, "IEEE8021X"
+    const/4 v1, 0x2
 
-    aput-object v1, v0, v6
+    const-string v2, "WPA_EAP"
 
-    const-string v1, "WPA2_PSK"
+    aput-object v2, v0, v1
 
-    aput-object v1, v0, v7
+    const/4 v1, 0x3
 
-    const/4 v1, 0x5
+    const-string v2, "IEEE8021X"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x4
+
+    const-string v2, "WPA2_PSK"
+
+    aput-object v2, v0, v1
+
+    add-int/lit8 v1, v1, 0x1
 
     const-string v2, "WAPI_PSK"
 
     aput-object v2, v0, v1
 
-    const/4 v1, 0x6
+    add-int/lit8 v1, v1, 0x1
 
     const-string v2, "WAPI_CERT"
 
     aput-object v2, v0, v1
 
     sput-object v0, Landroid/net/wifi/WifiConfiguration$KeyMgmt;->strings:[Ljava/lang/String;
-
-    .line 138
-    const/4 v0, 0x7
-
-    new-array v0, v0, [Ljava/lang/String;
-
-    const-string v1, "NONE"
-
-    aput-object v1, v0, v3
-
-    const-string v1, "WPA_PSK WPA-PSK-SHA256"
-
-    aput-object v1, v0, v4
-
-    const-string v1, "WPA_EAP WPA-EAP-SHA256"
-
-    aput-object v1, v0, v5
-
-    const-string v1, "IEEE8021X"
-
-    aput-object v1, v0, v6
-
-    const-string v1, "WPA2_PSK"
-
-    aput-object v1, v0, v7
-
-    const/4 v1, 0x5
-
-    const-string v2, "WAPI_PSK"
-
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x6
-
-    const-string v2, "WAPI_CERT"
-
-    aput-object v2, v0, v1
-
-    add-int/lit8 v1, v1, 0x1
-
-    const-string v2, "WAPI_PSK"
-
-    aput-object v2, v0, v1
-
-    add-int/lit8 v1, v1, 0x1
-
-    const-string v2, "WAPI_CERT"
-
-    aput-object v2, v0, v1
-
-    sput-object v0, Landroid/net/wifi/WifiConfiguration$KeyMgmt;->pmf_strings:[Ljava/lang/String;
 
     return-void
 .end method

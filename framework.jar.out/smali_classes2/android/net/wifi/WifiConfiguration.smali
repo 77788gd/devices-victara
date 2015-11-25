@@ -680,6 +680,7 @@
     iput v4, p0, Landroid/net/wifi/WifiConfiguration;->sim_slot:I
 
     invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiConfiguration;->initFlymeExtFields()V
+
     return-void
 .end method
 
@@ -1166,6 +1167,7 @@
     iput v1, p0, Landroid/net/wifi/WifiConfiguration;->sim_slot:I
 
     invoke-direct/range {p0 .. p1}, Landroid/net/wifi/WifiConfiguration;->initFlymeExtFields(Landroid/net/wifi/WifiConfiguration;)V
+
     .end local v0    # "i":I
     :cond_5
     return-void
@@ -4051,6 +4053,7 @@
     move-object/from16 v1, v28
 
     invoke-direct {v0, v1}, Landroid/net/wifi/WifiConfiguration;->toStringExt(Ljava/lang/StringBuilder;)V
+
     const-string v29, "\nEnterprise config:\n"
 
     invoke-virtual/range {v28 .. v29}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -5509,6 +5512,7 @@
     :cond_1
     :goto_3
     invoke-direct/range {p0 .. p1}, Landroid/net/wifi/WifiConfiguration;->writeExtra(Landroid/os/Parcel;)V
+
     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->enterpriseConfig:Landroid/net/wifi/WifiEnterpriseConfig;
 
     invoke-virtual {p1, v4, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V

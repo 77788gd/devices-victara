@@ -880,6 +880,7 @@
     iput-object v0, p0, Landroid/content/Intent;->mSource:Ljava/lang/String;
 
     invoke-static/range {p0 .. p1}, Landroid/content/Intent$FlymeInjector;->createFlymeIntent(Landroid/content/Intent;Landroid/content/Intent;)V
+
     return-void
 .end method
 
@@ -942,6 +943,7 @@
     iput-object v0, p0, Landroid/content/Intent;->mSource:Ljava/lang/String;
 
     invoke-static/range {p0 .. p0}, Landroid/content/Intent$FlymeInjector;->createFlymeIntent(Landroid/content/Intent;)V
+
     return-void
 .end method
 

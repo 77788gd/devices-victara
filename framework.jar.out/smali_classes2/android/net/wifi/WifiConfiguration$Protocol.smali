@@ -52,17 +52,12 @@
 
     aput-object v2, v0, v1
 
-    const/4 v1, 0x2
-
-    const-string v2, "WAPI"
-
-    aput-object v2, v0, v1
-
     add-int/lit8 v1, v1, 0x1
 
     const-string v2, "WAPI"
 
     aput-object v2, v0, v1
+
     sput-object v0, Landroid/net/wifi/WifiConfiguration$Protocol;->strings:[Ljava/lang/String;
 
     return-void

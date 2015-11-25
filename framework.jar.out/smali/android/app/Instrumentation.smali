@@ -1983,8 +1983,6 @@
     move-result v26
 
     .local v26, "result":I
-    move/from16 v0, v26
-    
     move-object/from16 v2, p0
 
     move-object/from16 v3, p1
@@ -2004,6 +2002,8 @@
     move/from16 v10, v26
 
     invoke-direct/range {v2 .. v10}, Landroid/app/Instrumentation;->mzStartRecommendActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;I)V
+
+    move/from16 v0, v26
 
     move-object/from16 v1, p5
 

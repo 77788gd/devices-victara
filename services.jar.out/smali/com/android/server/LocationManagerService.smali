@@ -83,6 +83,7 @@
 .field private mAlarmManager:Landroid/app/AlarmManager;
 
 .field private mMzModeObserver:Lcom/android/server/LocationManagerService$MzNetworkProviderModeSettingsObserver;
+
 .field private final mAppOps:Landroid/app/AppOpsManager;
 
 .field private mBackgroundHandler:Lcom/android/server/LocationManagerService$LocationBackgroundHandler;

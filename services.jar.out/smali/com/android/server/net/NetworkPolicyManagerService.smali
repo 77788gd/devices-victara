@@ -8745,6 +8745,7 @@
     invoke-static {v3, v2}, Lcom/android/server/net/NetworkPolicyManagerService$MzInjector;->flymeChangeUidRules(II)I
 
     move-result v3
+
     if-nez v3, :cond_7
 
     iget-object v6, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidRules:Landroid/util/SparseIntArray;

@@ -2220,6 +2220,7 @@
     move-result v2
 
     or-int/2addr v0, v2
+
     iget v2, p0, Landroid/view/WindowManager$LayoutParams;->needsMenuKey:I
 
     iget v3, p1, Landroid/view/WindowManager$LayoutParams;->needsMenuKey:I
@@ -3000,6 +3001,7 @@
 
     :cond_14
     invoke-static {p0, v0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->toString(Landroid/view/WindowManager$LayoutParams;Ljava/lang/StringBuilder;)V
+
     iget v1, p0, Landroid/view/WindowManager$LayoutParams;->needsMenuKey:I
 
     if-eqz v1, :cond_15

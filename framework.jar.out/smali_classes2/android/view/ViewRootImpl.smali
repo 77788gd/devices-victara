@@ -6517,6 +6517,7 @@
     invoke-direct/range {p0 .. p0}, Landroid/view/ViewRootImpl;->mzSetLayoutRequested()Z
 
     move-result v45
+
     if-eqz v45, :cond_d
 
     move-object/from16 v0, p0
@@ -8822,6 +8823,7 @@
     invoke-direct {v0, v1}, Landroid/view/ViewRootImpl;->mzSetDidLayout(Z)Z
 
     move-result v32
+
     if-nez v32, :cond_56
 
     move-object/from16 v0, p0

@@ -6109,6 +6109,7 @@
 
     :cond_6
     invoke-virtual/range {p0 .. p1}, Lcom/android/server/wm/WindowManagerService;->mzApplayUserActivityTime(Lcom/android/server/wm/WindowState;)V
+
     iget v5, v1, Landroid/view/WindowManager$LayoutParams;->type:I
 
     .local v5, "type":I

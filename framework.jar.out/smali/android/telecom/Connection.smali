@@ -462,6 +462,7 @@
 
     :cond_b
     invoke-static {p0, v0}, Landroid/telecom/Connection;->mzAddCapabilitiesToString(ILjava/lang/StringBuilder;)V
+
     const-string v1, "]"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;

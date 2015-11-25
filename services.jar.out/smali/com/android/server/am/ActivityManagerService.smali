@@ -2363,6 +2363,7 @@
     invoke-static {v0}, Lcom/motorola/kpi/Kpi6paTop;->setContext(Landroid/content/Context;)V
 
     invoke-static/range {p0 .. p0}, Lcom/android/server/am/InjectorAMS;->setup(Lcom/android/server/am/ActivityManagerService;)V
+
     return-void
 .end method
 
@@ -34782,7 +34783,7 @@
 .end method
 
 .method public addErrorToDropBox(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
-    .locals 11
+    .locals 9
     .param p1, "eventType"    # Ljava/lang/String;
     .param p2, "process"    # Lcom/android/server/am/ProcessRecord;
     .param p3, "processName"    # Ljava/lang/String;
@@ -34794,34 +34795,262 @@
     .param p9, "crashInfo"    # Landroid/app/ApplicationErrorReport$CrashInfo;
 
     .prologue
-    sget v10, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
     invoke-static/range {p1 .. p9}, Lcom/android/server/am/InjectorAMS;->reportApplicationError(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
+
+    .line 11926
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-static {p2}, Lcom/android/server/am/ActivityManagerService;->processClass(Lcom/android/server/am/ProcessRecord;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "_"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 11927
+    .local v7, "dropboxTag":Ljava/lang/String;
+    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    const-string v2, "dropbox"
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Landroid/os/DropBoxManager;
+
+    .line 11931
+    .local v8, "dbox":Landroid/os/DropBoxManager;
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/InjectorAMS;->isEventTypeConstraint(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
+    if-eqz v8, :cond_0
+
+    invoke-virtual {v8, v7}, Landroid/os/DropBoxManager;->isTagEnabled(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_1
+
+    .line 12011
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 11933
+    :cond_1
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x400
+
+    invoke-direct {v4, v1}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 11934
+    .local v4, "sb":Ljava/lang/StringBuilder;
+    invoke-direct {p0, p2, p3, v4}, Lcom/android/server/am/ActivityManagerService;->appendDropBoxProcessHeaders(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Ljava/lang/StringBuilder;)V
+
+    .line 11935
+    if-eqz p4, :cond_2
+
+    .line 11936
+    const-string v1, "Activity: "
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-object v2, p4, Lcom/android/server/am/ActivityRecord;->shortComponentName:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11938
+    :cond_2
+    if-eqz p5, :cond_3
+
+    iget-object v1, p5, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
+
+    if-eqz v1, :cond_3
+
+    iget-object v1, p5, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
+
+    iget v1, v1, Lcom/android/server/am/ProcessRecord;->pid:I
+
+    iget v2, p2, Lcom/android/server/am/ProcessRecord;->pid:I
+
+    if-eq v1, v2, :cond_3
+
+    .line 11939
+    const-string v1, "Parent-Process: "
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-object v2, p5, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
+
+    iget-object v2, v2, Lcom/android/server/am/ProcessRecord;->processName:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11941
+    :cond_3
+    if-eqz p5, :cond_4
+
+    if-eq p5, p4, :cond_4
+
+    .line 11942
+    const-string v1, "Parent-Activity: "
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-object v2, p5, Lcom/android/server/am/ActivityRecord;->shortComponentName:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11944
+    :cond_4
+    if-eqz p6, :cond_5
+
+    .line 11945
+    const-string v1, "Subject: "
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11947
+    :cond_5
+    const-string v1, "Build: "
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    sget-object v2, Landroid/os/Build;->FINGERPRINT:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11948
+    invoke-static {}, Landroid/os/Debug;->isDebuggerConnected()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_6
+
+    .line 11949
+    const-string v1, "Debugger: Connected\n"
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11951
+    :cond_6
+    const-string v1, "\n"
+
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 11955
+    new-instance v0, Lcom/android/server/am/ActivityManagerService$19;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
-    move-object v0, p0
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-object v1, p1
+    const-string v2, "Error dump: "
 
-    move-object v2, p2
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-object v3, p3
+    move-result-object v1
 
-    move-object v4, p4
+    invoke-virtual {v1, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-object/from16 v5, p5
+    move-result-object v1
 
-    move-object/from16 v6, p6
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-object/from16 v7, p7
+    move-result-object v2
 
-    move-object/from16 v8, p8
+    move-object v1, p0
 
-    move-object/from16 v9, p9
+    move-object/from16 v3, p7
 
-    invoke-direct/range {v0 .. v10}, Lcom/android/server/am/ActivityManagerService;->addErrorToDropBox(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;I)V
+    move-object/from16 v5, p8
 
-    return-void
+    move-object/from16 v6, p9
+
+    invoke-direct/range {v0 .. v8}, Lcom/android/server/am/ActivityManagerService$19;-><init>(Lcom/android/server/am/ActivityManagerService;Ljava/lang/String;Ljava/lang/String;Ljava/lang/StringBuilder;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;Ljava/lang/String;Landroid/os/DropBoxManager;)V
+
+    .line 12004
+    .local v0, "worker":Ljava/lang/Thread;
+    if-nez p2, :cond_7
+
+    .line 12007
+    invoke-virtual {v0}, Ljava/lang/Thread;->run()V
+
+    goto/16 :goto_0
+
+    .line 12009
+    :cond_7
+    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+
+    goto/16 :goto_0
 .end method
 
 .method public addPackageDependency(Ljava/lang/String;)V
