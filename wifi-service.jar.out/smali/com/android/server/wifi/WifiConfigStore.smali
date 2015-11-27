@@ -2464,6 +2464,8 @@
 
     .line 2827
     :cond_e
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/wifi/WifiConfigStore;->mzSetKeyEncry(Landroid/net/wifi/WifiConfiguration;)V
+
     move-object/from16 v0, p1
 
     iget-object v0, v0, Landroid/net/wifi/WifiConfiguration;->wapiAsCert:Ljava/lang/String;
@@ -2483,10 +2485,6 @@
     move-object/from16 v0, p1
 
     iget-object v0, v0, Landroid/net/wifi/WifiConfiguration;->wapiAsCert:Ljava/lang/String;
-    :cond_e
-    invoke-direct/range {p0 .. p1}, Lcom/android/server/wifi/WifiConfigStore;->mzSetKeyEncry(Landroid/net/wifi/WifiConfiguration;)V
-
-    const/4 v13, 0x0
 
     move-object/from16 v28, v0
 
@@ -5222,7 +5220,7 @@
 
     move-object/from16 v1, p1
 
-    invoke-direct {v0, v1, v9}, Lcom/android/server/wifi/WifiConfigStore;->mzSetKeyEncry(Landroid/net/wifi/WifiConfiguration;Landroid/net/wifi/WifiConfiguration;)V
+    invoke-direct {v0, v1, v10}, Lcom/android/server/wifi/WifiConfigStore;->mzSetKeyEncry(Landroid/net/wifi/WifiConfiguration;Landroid/net/wifi/WifiConfiguration;)V
 
     move-object/from16 v0, p0
 

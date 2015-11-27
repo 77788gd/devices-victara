@@ -1810,6 +1810,4 @@ Battery saver turns off automatically when your device is charging."</string>
     <string name="permdesc_lockNow">Allows the app to lock the phone, requiring the user to enter their unlock PIN, password, or pattern in order to resume using the phone.</string>
     <string name="permlab_clearCache">Clear Cache</string>
     <string name="permdesc_clearCache">Allows the app to clear cache directory if this directory space is lower than some threshold</string>
-    <string name="ellipsis">…</string>
-    <string name="ellipsis_two_dots">‥</string>
 </resources>
